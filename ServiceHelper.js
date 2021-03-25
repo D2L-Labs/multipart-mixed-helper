@@ -22,7 +22,6 @@ export default function sendMultipartMixedRequest(url, topic, file, token) {
   const request = new XMLHttpRequest();
 
 	return new Promise(function (resolve, reject) {
-		// Setup our listener to process compeleted requests
 		request.onreadystatechange = function () {
       if (request.readyState !== 4) return;
 
@@ -34,8 +33,8 @@ export default function sendMultipartMixedRequest(url, topic, file, token) {
 					statusText: request.statusText
 				});
 			}
-    };
-    console.log(request)
+		};
+		
     request.open("POST", url, true);
     request.setRequestHeader("Content-Type", "multipart/mixed; boundary=" + boundary);
     request.setRequestHeader("Authorization", "Bearer " + token);
