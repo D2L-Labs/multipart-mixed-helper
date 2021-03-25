@@ -1,11 +1,10 @@
-import Q from "q";
 import MultipartSerializer from "./MultipartMixedHelper.js";
 
 export default function sendMultipartMixedRequest(url, topic, file, token) {
   if (!XMLHttpRequest.prototype.sendAsBinary) {
     XMLHttpRequest.prototype.sendAsBinary = function (sData) {
       const nBytes = sData.length,
-        ui8Data = new Uint8Array(nBytes);
+      ui8Data = new Uint8Array(nBytes);
       for (let nIdx = 0; nIdx < nBytes; nIdx++) {
         ui8Data[nIdx] = sData.charCodeAt(nIdx) & 0xff;
       }
@@ -18,15 +17,29 @@ export default function sendMultipartMixedRequest(url, topic, file, token) {
     boundary: boundary,
     topic: topic,
     file: file,
-  };
-  const deferred = Q.defer();
-  const xhr = new XMLHttpRequest();
+	};
+	
+  const request = new XMLHttpRequest();
 
-  xhr.open("POST", url, true);
-  xhr.setRequestHeader("Content-Type", "multipart/mixed; boundary=" + boundary);
-  xhr.setRequestHeader("Authorization", "Bearer " + token);
-  xhr.send(MultipartSerializer.serialize(payload));
-  // xhr.sendAsBinary( MultipartSerializer.serialize( payload) );
+	return new Promise(function (resolve, reject) {
+		// Setup our listener to process compeleted requests
+		request.onreadystatechange = function () {
+      if (request.readyState !== 4) return;
 
-  return deferred.promise;
-}
+			if (request.status >= 200 && request.status < 300) {
+				resolve(request);
+			} else {
+				reject({
+					status: request.status,
+					statusText: request.statusText
+				});
+			}
+    };
+    console.log(request)
+    request.open("POST", url, true);
+    request.setRequestHeader("Content-Type", "multipart/mixed; boundary=" + boundary);
+    request.setRequestHeader("Authorization", "Bearer " + token);
+    request.send(MultipartSerializer.serialize(payload));
+	})
+};
+
