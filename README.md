@@ -7,6 +7,9 @@ To include this repo in your project as a subrepo, simply run the command in the
 
 As an example, the multipart-mixed-helper is added as a subrepo in ``https://github.com/D2L-Labs/cold-start.git``
 
+## Updating/Pulling Recent Changes
+To checkout a specific branch or pull latest version of this repo, simply ``cd`` into this repo within your project (``cd rootProj/../../multipart-mixed-helper``) and ``git pull`` to get the latest changes on that branch (usually ``main``)
+
 ## Usage
 Adding the submodule simply creates a folder of this code in your repo, importing is simple: ``import sendMultipartMixedRequest from "./multipart-mixed-helper/ServiceHelper";`` (Be sure to use the correct path to the submodule in your import, in cold-start the submodule was imported in the same directory as the file that needed it).
 
