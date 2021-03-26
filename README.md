@@ -26,7 +26,7 @@ const file = {
  -  ``fileName`` is the name of the file without the extension (.pdf, .word)
  -  ``fileData`` is the base64 representation of the binary file data which can be obtained by using a ``blobToData`` conversion as shown below.
 
-(See Example Below for in code usage of this function)
+(See example below for in-code usage of this conversion)
 ```
 const blobToData = (blob) => {
       return new Promise((resolve) => {
@@ -36,8 +36,8 @@ const blobToData = (blob) => {
       });
     };
     
-    let data = await blobToData(res.data);
-    data = data.split(",").pop();
+let data = await blobToData(res.data);
+data = data.split(",").pop();
 ```
  - Lastly, ``token`` is your Bearer auth token for Brightspace OAuth2 requests. If your application does not use Bearer Tokens, or would like to use a different OAuth method, you can simply change what is set as the requestHeader on line 41: ``request.setRequestHeader("Authorization", "Bearer " + token);`` of ``ServiceHelper.js`` located in this repo. 
 
