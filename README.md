@@ -1,6 +1,6 @@
 # multipart-mixed-helper
 ## Context
-The multipart-mixed-helper provides a developers an easy way to send and await multipart-mixed requests.
+The multipart-mixed-helper provides developers an easy way to send and await multipart-mixed requests.
 
 ## Installation
 To include this repo in your project as a subrepo, simply run the command in the directory you want it to appear in: `git submodule add https://github.com/D2L-Labs/multipart-mixed-helper.git`
