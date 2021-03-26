@@ -3,15 +3,12 @@
 The multipart-mixed-helper provides developers an easy way to send and await multipart-mixed requests.
 
 ## Installation
-To include this repo in your project as a subrepo, simply run the command in the directory you want it to appear in: `git submodule add https://github.com/D2L-Labs/multipart-mixed-helper.git`
+To include this repo in your project you can install with NPM with the following command: ``npm i --save https://github.com/D2L-Labs/multipart-mixed-helper.git``
 
-As an example, the multipart-mixed-helper is added as a subrepo in ``https://github.com/D2L-Labs/cold-start.git``
-
-## Updating/Pulling Recent Changes
-To checkout a specific branch or pull latest version of this repo, simply ``cd`` into this repo within your project (``cd rootProj/../../multipart-mixed-helper``) and ``git pull`` to get the latest changes on that branch (usually ``main``)
+The following line should be present in your package.json ``"multipart-mixed-helper": "git+https://github.com/D2L-Labs/multipart-mixed-helper.git",``
 
 ## Usage
-Adding the submodule simply creates a folder of this code in your repo, importing is simple: ``import sendMultipartMixedRequest from "./multipart-mixed-helper/ServiceHelper";`` (Be sure to use the correct path to the submodule in your import, in cold-start the submodule was imported in the same directory as the file that needed it).
+Importing is simple: ``import sendMultipartMixedRequest from "multipart-mixed-helper/ServiceHelper.js";`` 
 
 The ``sendMultipartMixedRequest`` takes in the following parameters ``sendMultipartMixedRequest(url, requestData, file, token)``, 
  -  ``url`` being the endpoint you want to send the request to
