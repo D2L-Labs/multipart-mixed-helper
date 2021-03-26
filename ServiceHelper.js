@@ -1,6 +1,6 @@
 import MultipartSerializer from "./MultipartMixedHelper.js";
 
-export default function sendMultipartMixedRequest(url, topic, file, token) {
+export default function sendMultipartMixedRequest(url, requestData, file, token) {
   if (!XMLHttpRequest.prototype.sendAsBinary) {
     XMLHttpRequest.prototype.sendAsBinary = function (sData) {
       const nBytes = sData.length,
@@ -15,7 +15,7 @@ export default function sendMultipartMixedRequest(url, topic, file, token) {
   const boundary = new Date().getTime() + "SmartC";
   const payload = {
     boundary: boundary,
-    topic: topic,
+    requestData: requestData,
     file: file,
 	};
 	

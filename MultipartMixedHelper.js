@@ -11,13 +11,13 @@ export default {
     jsonPart += "Content-Type: application/json\r\n";
     jsonPart += "\r\n";
     jsonPart +=
-      JSON.stringify(payload.topic).replace(/[\u007F-\uFFFF]/g, _encodeChar) +
+      JSON.stringify(payload.requestData).replace(/[\u007F-\uFFFF]/g, _encodeChar) +
       "\r\n";
     jsonPart += "--" + boundary + "\r\n";
 
     let filePart =
       'Content-Disposition: form-data; name:""; filename="' +
-      payload.file.filename +
+      payload.file.fileName +
       '"\r\n';
     filePart += "Content-Type: " + payload.file.contentType + "\r\n\r\n";
     // filePart += 'Content-Transfer-Encoding: base64';
