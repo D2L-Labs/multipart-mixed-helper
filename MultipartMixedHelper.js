@@ -3,8 +3,8 @@ const _encodeChar = function (char) {
   return "\\u" + ("0000" + char.charCodeAt(0).toString(16)).slice(-4);
 };
 
-export default {
-  serialize(payload) {
+
+const serialize = (payload) => {
     const boundary = payload.boundary;
 
     let jsonPart = "--" + boundary + "\r\n";
@@ -26,5 +26,6 @@ export default {
     filePart += "\r\n";
     filePart += "--" + boundary + "--";
     return jsonPart + filePart;
-  },
-};
+}
+
+module.exports = serialize;

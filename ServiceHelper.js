@@ -1,6 +1,11 @@
-import MultipartSerializer from "./MultipartMixedHelper.js";
+const serialize = require("./MultipartMixedHelper.js");
 
-export default function sendMultipartMixedRequest(url, requestData, file, token) {
+// import if not running in the browser
+if (!window.XMLHttpRequest) {
+  const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+}
+
+function sendMultipartMixedRequest(url, requestData, file, token) {
   if (!XMLHttpRequest.prototype.sendAsBinary) {
     XMLHttpRequest.prototype.sendAsBinary = function (sData) {
       const nBytes = sData.length,
@@ -26,7 +31,7 @@ export default function sendMultipartMixedRequest(url, requestData, file, token)
       if (request.readyState !== 4) return;
 
 			if (request.status >= 200 && request.status < 300) {
-				resolve(request);
+				resolve(request.status);
 			} else {
 				reject({
 					status: request.status,
@@ -38,7 +43,8 @@ export default function sendMultipartMixedRequest(url, requestData, file, token)
     request.open("POST", url, true);
     request.setRequestHeader("Content-Type", "multipart/mixed; boundary=" + boundary);
     request.setRequestHeader("Authorization", "Bearer " + token);
-    request.send(MultipartSerializer.serialize(payload));
+    request.send(serialize(payload));
 	})
 };
 
+module.exports = sendMultipartMixedRequest;
