@@ -42,7 +42,7 @@ const file = {
  - Lastly, ``token`` is your Bearer auth token for Brightspace OAuth2 requests. If your application does not use Bearer Tokens, or would like to use a different OAuth method, you can simply change what is set as the requestHeader on line 41: ``request.setRequestHeader("Authorization", "Bearer " + token);`` of ``ServiceHelper.js`` located in this repo. 
 
 ## Converting Files to Base64
-When dealing with files/binary data in the browser, a common data type is the Blob. When converting a blob to base64, a simple function like this can be used. We provide this in the repo by importing: ``import blobToBase64 from "multipart-mixed-helper/blobToBase64.js";``.
+When dealing with files/binary data in the browser, a common data type is the Blob. When converting a blob to base64, a simple function like this can be used. We provide this in the repo by importing: ``import blobToBase64 from "multipart-mixed-helper/BlobToBase64.js";``.
 ```
 const blobToBase64 = (blob) => {
       return new Promise((resolve) => {
