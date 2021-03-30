@@ -1,4 +1,4 @@
-const sampleTestUpload = require('./sampleUpload');
+const sampleTestUpload = require('./SampleUpload');
 
 const fileList = ['sample_sheets.xlsx', 'a_drawing.pdf', 'Material_single.docx', 'Material_multiple.pptx'];
 
