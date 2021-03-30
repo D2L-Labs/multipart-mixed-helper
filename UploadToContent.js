@@ -1,5 +1,5 @@
 const sendMultipartMixedRequest = require('./ServiceHelper.js');
-const mimeTypes = require('./mimeTypes');
+const mimeTypes = require('./MimeTypes');
 
 const uploadToContent = async (hostUrl, orgUnitId,  moduleId, fileName, fileContent, fileExtension, authToken) => {
     const createSubPostRoute = `/d2l/api/le/1.50/${orgUnitId}/content/modules/${moduleId}/structure/?base64=1`;
