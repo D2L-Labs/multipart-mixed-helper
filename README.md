@@ -11,19 +11,19 @@ The following line should be present in your package.json ``"multipart-mixed-hel
 
 For Uploading to Brightspace Content, you can use the fileUpload function: ``import uploadToContent from "multipart-mixed-helper/UploadToContent.js";``. This function wraps the ``sendMultipartMixedRequest()`` call and provides a template for uploading to a Brightspace Content Module. 
 
-The ``uploadToContent`` function takes in the following parameters ``uploadToContent(hostUrl, orgUnitId,  moduleId, fileName, fileContent, fileExtension, authToken)``
- -  ``hostUrl`` is the primary Brightspace domain you will be sending to (ex: ``https://d2llabs.desire2learn.com``)
+The ``uploadToContent`` function takes in the following parameters ``uploadToContent(hostUrl, orgUnitId,  moduleId, fileName, fileContent, fileExtension, authToken)``:
+ -  ``hostUrl`` is the primary Brightspace domain you will be sending to (ex: ``https://d2llabs.desire2learn.com``).
  -  ``orgUnitId`` is the orgUnitId containing the module you want to upload to.
  -  ``moduleId`` is the moduleId of the module you want to upload the file into.
- -  ``fileName`` is the name of the file as it will appear on Brightspace
- -  ``fileContent`` is the base64 representation of your file's binary data (examples below on how to obtain in Browser/Node)
- -  ``fileExtension`` is the file extension (.pdf, .docx, .xslx, etc)
+ -  ``fileName`` is the name of the file as it will appear on Brightspace.
+ -  ``fileContent`` is the base64 representation of your file's binary data (examples below on how to obtain in Browser/Node).
+ -  ``fileExtension`` is the file extension (.pdf, .docx, .xslx, etc).
  -  ``authToken`` the D2L Oauth2 token required to authorize file uploads in that scope.
 
 If you would like to craft the request yourself you can import ``sendMultipartMixedRequest`` itself: ``import sendMultipartMixedRequest from "multipart-mixed-helper/ServiceHelper.js";`` 
 
-The ``sendMultipartMixedRequest`` takes in the following parameters ``sendMultipartMixedRequest(url, requestData, file, token)``, 
- -  ``url`` being the endpoint you want to send the request to
+The ``sendMultipartMixedRequest`` takes in the following parameters ``sendMultipartMixedRequest(url, requestData, file, token)``:
+ -  ``url`` being the endpoint you want to send the request to.
  -  ``requestData`` is your json payload you want to send, like a POST request body.
  -  ``file`` is an object containing the following:
 
@@ -34,15 +34,15 @@ const file = {
     fileData: fileContent,
   };
 ```
- -  ``file.contentType`` is the mime-type of the file (example for PDFs: ``application/pdf``)
- -  ``fileName`` is the name of the file without the extension (.pdf, .word)
+ -  ``file.contentType`` is the mime-type of the file (example for PDFs: ``application/pdf``).
+ -  ``fileName`` is the name of the file without the extension (.pdf, .word).
  -  ``fileData`` is the base64 representation of the binary file data which can be obtained by using a ``blobToData`` conversion as shown below.
 
 
  - Lastly, ``token`` is your Bearer auth token for Brightspace OAuth2 requests. If your application does not use Bearer Tokens, or would like to use a different OAuth method, you can simply change what is set as the requestHeader on line 41: ``request.setRequestHeader("Authorization", "Bearer " + token);`` of ``ServiceHelper.js`` located in this repo. 
 
 ## Converting Files to Base64
-When dealing with files/binary data in the browser, a common data type is the Blob. When converting a blob to base64, a simple function like this can be used. We provide this in the repo by importing: ``import blobToBase64 from "multipart-mixed-helper/blobToBase64.js";``
+When dealing with files/binary data in the browser, a common data type is the Blob. When converting a blob to base64, a simple function like this can be used. We provide this in the repo by importing: ``import blobToBase64 from "multipart-mixed-helper/blobToBase64.js";``.
 ```
 const blobToBase64 = (blob) => {
       return new Promise((resolve) => {
@@ -55,7 +55,7 @@ const blobToBase64 = (blob) => {
 let data = await blobToData(res.data);
 data = data.split(",").pop();
 ```
-When dealing with files and the fileSystem in Node.js, base64 binary data can be read directly from the file as shown below. We also provide this in the repo by importing: ``import fileToBase64 from "multipart-mixed-helper/FileToBase64.js";``
+When dealing with files and the fileSystem in Node.js, base64 binary data can be read directly from the file as shown below. We also provide this in the repo by importing: ``import fileToBase64 from "multipart-mixed-helper/FileToBase64.js";``.
 ```
 const fs = require('fs').promises;
 
@@ -84,7 +84,7 @@ const runTest = async (file) => {
 ## Testing 
 
 ### Setting up environment variables
-- Navigate to the testing folder using a TextEditor (ex: Visual Studio Code)
+- Navigate to the testing folder using a TextEditor (ex: Visual Studio Code).
 - Create a new file titled : ``.env``
 - Inside the ``.env`` file copy and paste the following fields:
 
@@ -96,17 +96,17 @@ MODULE_ID=
 ORG_UNIT_ID=
 ```
 - Populate the ``USR_NAME`` and ``USR_PWD`` with the Brightspace credentials you want to use for testing.
-- The ``HOST_URL`` is the Brightspace domain you are using (ex: ``https://d2llabs.desire2learn.com``)
+- The ``HOST_URL`` is the Brightspace domain you are using (ex: ``https://d2llabs.desire2learn.com``).
 - ``MODULE_ID`` and ``ORG_UNIT_ID`` are the respective Id's of where you want to store the file.
 
 ### Running the Test
 - Open the terminal and ``cd testing``
 - ``npm install``
 - ``npm test``
-- That's it! (If everything is configured correctly, and the accounts have correct authorization, you should have 4 successful tests passed for the 4 sample files)
+- That's it! (If everything is configured correctly, and the accounts have correct authorization, you should have 4 successful tests passed for the 4 sample files).
 - Double check by logging into Brightspace and assuring the files are indeed in the intended module.
 
-The ``/testing`` folder should have the following files if configured correctly
+The ``/testing`` folder should have the following files if configured correctly.
 - ![Screen Shot 2021-03-30 at 1 21 57 AM](https://user-images.githubusercontent.com/44853346/112937809-56599c80-90f6-11eb-849c-f7b493874cb5.png)
 
 
