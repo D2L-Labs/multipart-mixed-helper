@@ -107,7 +107,7 @@ ORG_UNIT_ID=
 - Double check by logging into Brightspace and assuring the files are indeed in the intended module.
 
 The ``/testing`` folder should have the following files if configured correctly.
-- ![Screen Shot 2021-03-30 at 11 56 34 AM](https://user-images.githubusercontent.com/44853346/113018904-00651300-914f-11eb-9a1e-afa4d9ec17e0.png)
+- ![Screen Shot 2021-03-30 at 12 04 42 PM](https://user-images.githubusercontent.com/44853346/113019981-26d77e00-9150-11eb-89ad-b184a65a9e74.png)
 
 
 
