@@ -1,25 +1,13 @@
 {
-  "name": "multipart-mixed-helper",
-  "version": "1.2.0",
+  "name": "testing",
+  "version": "1.0.0",
   "description": "",
-  "main": "MultipartMixedHelper.js",
-  "private": true,
+  "main": "AuthenticateUser.js",
   "scripts": {
     "test": "jest"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/D2L-Labs/multipart-mixed-helper.git"
-  },
-  "author": "D2L Labs (D2L Corporation)",
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/D2L-Labs/multipart-mixed-helper/issues"
-  },
-  "homepage": "https://github.com/D2L-Labs/multipart-mixed-helper#readme",
-  "devDependencies": {
-    "jest": "^26.6.3"
-  },
   "dependencies": {
     "dotenv": "^8.2.0",
     "superagent": "^6.1.0",
