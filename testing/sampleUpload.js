@@ -10,14 +10,6 @@ const HOST_URL = process.env.HOST_URL;
 const MODULE_ID = process.env.MODULE_ID;
 const ORG_UNIT_ID = process.env.ORG_UNIT_ID;
 
-
-const mimeTypes = {
-  pptx: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
-  docx: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-  csv: "text/csv",
-  pdf: "application/pdf"
-}
-
 const base64Encode = async (file) => {
   // read binary data
   var bitmap = await fs.readFile(file);
@@ -64,17 +56,11 @@ const authenticateAdmin = async () => {
 
 const runTest = async (file) => {
   const authToken = (await authenticateAdmin()).token; 
-  let fileParts = file.split('.');
+  const fileParts = file.split('.');
   const fileData = await base64Encode(`sample_files/${file}`);
-  let fileName = fileParts[0];
-  let fileExtension = fileParts[1];
-  let fileType = {
-    ending: fileExtension,
-    mimeType: mimeTypes[fileExtension],
-  };
-  const createSubPostRoute = `/d2l/api/le/1.50/${ORG_UNIT_ID}/content/modules/${MODULE_ID}/structure/?base64=1`;
-  const fullRequestUrl = HOST_URL + createSubPostRoute;
-  const res = await uploadToContent(fullRequestUrl, fileName, fileData, fileType, authToken);
+  const fileName = fileParts[0];
+  const fileExtension = fileParts[1];
+  const res = await uploadToContent(HOST_URL, ORG_UNIT_ID, MODULE_ID, fileName, fileData, fileExtension, authToken);
   return res;
 }
 

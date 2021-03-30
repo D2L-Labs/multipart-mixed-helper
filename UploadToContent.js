@@ -1,6 +1,13 @@
-const sendMultipartMixedRequest = require('./ServiceHelper.js')
+const sendMultipartMixedRequest = require('./ServiceHelper.js');
+const mimeTypes = require('./mimeTypes');
 
-const uploadToContent = async (fullRequestUrl, fileName, fileContent, fileType, authToken) => {
+const uploadToContent = async (hostUrl, orgUnitId,  moduleId, fileName, fileContent, fileExtension, authToken) => {
+    const createSubPostRoute = `/d2l/api/le/1.50/${orgUnitId}/content/modules/${moduleId}/structure/?base64=1`;
+    const fileType = {
+        ending: fileExtension,
+        mimeType: mimeTypes[fileExtension],
+      };
+
     try {  
       const requestData = {
         Title: fileName,
@@ -24,7 +31,7 @@ const uploadToContent = async (fullRequestUrl, fileName, fileContent, fileType, 
       };
     
       const res = await sendMultipartMixedRequest(
-        fullRequestUrl,
+        hostUrl + createSubPostRoute,
         requestData,
         file,
         authToken
