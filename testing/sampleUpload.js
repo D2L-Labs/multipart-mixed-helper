@@ -73,8 +73,8 @@ const runTest = async (file) => {
     mimeType: mimeTypes[fileExtension],
   };
   const createSubPostRoute = `/d2l/api/le/1.50/${ORG_UNIT_ID}/content/modules/${MODULE_ID}/structure/?base64=1`;
-  const entireUploadPath = HOST_URL + createSubPostRoute;
-  const res = await uploadToContent(entireUploadPath, fileName, fileData, fileType, authToken);
+  const fullRequestUrl = HOST_URL + createSubPostRoute;
+  const res = await uploadToContent(fullRequestUrl, fileName, fileData, fileType, authToken);
   return res;
 }
 
