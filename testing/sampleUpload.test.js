@@ -1,6 +1,6 @@
 const sampleTestUpload = require('./SampleUpload');
 
-const fileList = ['sample_sheets.xlsx', 'a_drawing.pdf', 'Material_single.docx', 'Material_multiple.pptx'];
+const fileList = ['test_excel.xlsx', 'test_pdf.pdf', 'test_document.docx', 'test_powerpoint.pptx'];
 
 describe("File Upload To BrightSpace", () => {
   test.each(fileList)(
