@@ -1,4 +1,4 @@
-const fileUpload = require('../UploadToContent.js');
+const uploadToContent = require('../UploadToContent.js');
 const request = require('superagent');
 const fs = require('fs').promises
 require('dotenv').config(); 
@@ -74,7 +74,7 @@ const runTest = async (file) => {
   };
   const createSubPostRoute = `/d2l/api/le/1.50/${ORG_UNIT_ID}/content/modules/${MODULE_ID}/structure/?base64=1`;
   const entireUploadPath = HOST_URL + createSubPostRoute;
-  const res = await fileUpload(entireUploadPath, fileName, fileData, fileType, authToken);
+  const res = await uploadToContent(entireUploadPath, fileName, fileData, fileType, authToken);
   return res;
 }
 
