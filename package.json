@@ -1,6 +1,6 @@
 {
   "name": "multipart-mixed-helper",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "The multipart-mixed-helper is a great tool for uploading files to Brightspace in the browser or server, providing developers an easy way to send and await multipart-mixed upload requests.",
   "main": "BlobToBase64.js",
   "dependencies": {
