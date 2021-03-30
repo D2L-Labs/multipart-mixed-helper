@@ -1,6 +1,6 @@
 # multipart-mixed-helper
 ## Context
-The multipart-mixed-helper is a great tool for uploading files to Brightspace in the browser or server, providing developers an easy way to send and await multipart-mixed requests.
+The multipart-mixed-helper is a great tool for uploading files to Brightspace in the browser or server, providing developers an easy way to send and await multipart-mixed upload requests.
 
 ## Installation
 To include this repo in your project you can install with NPM with the following command: ``npm i --save https://github.com/D2L-Labs/multipart-mixed-helper.git``
